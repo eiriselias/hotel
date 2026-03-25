@@ -10,13 +10,13 @@ const Navbar = () => {
       </Link>
       <div>
         <ul className='flex gap-8'>
-          <li>Home</li>
+          <li><Link href="/">Home</Link></li>
           <li>Habitaciones</li>
           <li>Huespedes</li>
         </ul>
       </div>
       <div>
-        <span>Iniciar Sesion</span>
+        <Link href="inicioSesion">Iniciar Sesion</Link>
       </div>
     </div>
   )

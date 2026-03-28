@@ -14,10 +14,9 @@ export const Button = ({children, className="", ...props}:PropsButton) => {
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export const Input = ({ className, placeholder, type }: Props) => {
+export const Input = ({ className, ...props }: Props) => {
   return (
     <input className={`bg-white px-4 py-2 rounded-tl-2xl rounded-br-2xl w-full ${className}`} 
-    placeholder={placeholder}
-    type={type}/>
+    {...props}/>
   )
 }

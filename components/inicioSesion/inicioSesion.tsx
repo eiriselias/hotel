@@ -6,15 +6,16 @@ import { ILoginProps } from "@/types/ITypes"
 import { Login } from "@/helpers/auth.helpers"
 import { useRouter } from "next/navigation"
 import Swal from "sweetalert2"
+import {useAuth} from "@/context/AuthContext"
 
 const InicioSesion = () => {
 
   const router = useRouter()
+  const {login}= useAuth()
 
   const inicialStade ={
     email : "",
-    password : "",
-    token:""
+    password : ""
   }
 
   const [dataUser, setDataUser] = useState<ILoginProps>(inicialStade)
@@ -31,19 +32,26 @@ const InicioSesion = () => {
     e.preventDefault()
     const response = await Login(dataUser)
 
-    if (response.success) {
-      localStorage.setItem('userSesion', JSON.stringify(response.data));
+    if (response.success && response.data) {
+      login(response.data)
       Swal.fire({
+        position: "top-end",
         icon: "success",
         title: "Inicio exitoso",
-        text: `Bienvenido ${dataUser.email}`
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true
       })
       router.push("/")
   } else {
     Swal.fire({
+      position: "top-end",
       icon:"error",
       title: "Error al inicio de sesión",
-      text: "Correo o contraseña incorrecta"
+      text: "Correo o contraseña incorrecta",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true
     })
   }
   }

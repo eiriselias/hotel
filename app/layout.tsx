@@ -3,6 +3,7 @@ import "./globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
+import { AuthProvider } from "@/context/AuthContext";
 
 
 export const metadata: Metadata = {
@@ -18,13 +19,15 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <Navbar/>
-        <main>
-          {children}
-        </main>
-        <footer>
-          <Footer/>
-        </footer>
+        <AuthProvider>
+          <Navbar/>
+          <main>
+            {children}
+          </main>
+          <footer>
+            <Footer/>
+          </footer>
+        </AuthProvider>
       </body>
     </html>
   );

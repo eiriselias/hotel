@@ -1,4 +1,4 @@
-import { ILoginProps } from "@/types/ITypes";
+import { IAuthRepose, ILoginProps } from "@/types/ITypes";
 
 const dataBaseUrl = "http://localhost:3000"
 
@@ -19,7 +19,7 @@ export async function Login(dataUser:ILoginProps) {
             throw new Error("El servidor no devolvió JSON");
         }
         
-        const data:ILoginProps = await res.json()
+        const data:IAuthRepose = await res.json()
 
         if(!res.ok){
             return {

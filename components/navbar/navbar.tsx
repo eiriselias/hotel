@@ -21,21 +21,34 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex justify-between py-2 px-8 bg-blue-500 text-white'>
+    <div className='flex justify-between items-center py-2 px-8 bg-blue-500 text-white'>
       <Link href="/" className='flex gap-2 items-center'>
-        <i className="fa-solid fa-hotel"></i>
-        <span>Eiris Hotel</span>
+      {
+        !user && <img src="MiHotel.png" alt='LogoMiHotel' width="50" height="50"/>
+      }
+        <span className='text-2xl'>Mi Hotel</span>
       </Link>
       <div>
         <ul className='flex gap-8'>
           <li><Link href="/">Home</Link></li>
-          <li>Habitaciones</li>
-          <li>Huespedes</li>
+          <li><Link href="/habitaciones">Habitaciones</Link></li>
+          <li><Link href="/gastrobar">Gastrobar</Link></li>
+          {
+            user && <li><Link href="/huespedes">Huespedes</Link></li>
+          }
         </ul>
       </div>
-      <div>
+      <div className='flex gap-8 items-center'>
         {
-          !user ? (<Link href="inicioSesion">Iniciar Sesion</Link>):(<Link href="/" onClick={handleClose}>Cerrar Sesion</Link>)
+          !user ? (<><Link href="inicioSesion">Iniciar Sesion</Link></>):(
+            <>
+              <div className='flex gap-2 items-center'>
+                <i className="fa-solid fa-user"></i>
+                <span>Bienvenido {user.name}</span>
+              </div>
+              <Link href="/" onClick={handleClose}>Cerrar Sesion</Link>
+            </>
+          )
         }
       </div>
     </div>

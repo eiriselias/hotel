@@ -28,6 +28,18 @@ const InicioSesion = () => {
     })
   }
 
+  const handleForget = ()=>{
+    Swal.fire({
+      position: "top-end",
+      icon: "info",
+      title: "En construcion",
+      text: "La opcion aun esta en construcion",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true
+    })
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     const response = await Login(dataUser)
@@ -58,15 +70,19 @@ const InicioSesion = () => {
 
   return (
     <div className='w-full h-full flex justify-center items-center'>
-        <div className='flex flex-col justify-center items-center bg-blue-500 w-1/2 py-8 rounded-tl-2xl rounded-br-2xl'>
-            <div>
-                <span className='text-2xl text-white '>Eiris Hotel</span>
+        <div className='flex flex-col justify-center items-center bg-blue-500 w-[20%] py-8 rounded-tl-2xl rounded-br-2xl'>
+            <div className="flex flex-col justify-center items-center text-white">
+                <h1>Acceder al sistema</h1>
+                <hr className="w-full border-t border-gray-300 my-2" />
+                <img src="MiHotel.png" alt='LogoMiHotel' width="150" height="150"/>
+                <span className='text-2xl text-white '>Mi Hotel</span>
+                <h3>¡Bienvenido de nuevo!</h3>
             </div>
-            <form className='mt-4 flex flex-col gap-8 w-[60%]' onSubmit={handleSubmit}>
+            <form className='mt-4 flex flex-col gap-8 w-[80%]' onSubmit={handleSubmit}>
                 <Input type="email" placeholder='Correo' name="email" value={dataUser.email} onChange={handleChange} required/>
                 <Input type="password" placeholder='Contraseña' name="password" value={dataUser.password} onChange={handleChange} required/>
-                <Button className='bg-white text-blue-500' type="submit">Ingresar</Button>
-                <Link href="/" className="text-white text-sm">Olvide la contraseña</Link>
+                <Button className='bg-gray-700 text-white' type="submit">Ingresar</Button>
+                <Link href="/" className="text-white text-sm" onClick={handleForget}>Olvide la contraseña</Link>
             </form>
         </div>
     </div>

@@ -5,7 +5,7 @@ const Carrucel = ({slides, tipo}:{slides: string[] | undefined, tipo?: string},)
 
   if(!slides) return null
 
-  const [recorrido, setRecorrido] = useState<number>(1)
+  const [recorrido, setRecorrido] = useState<number>(0)
 
   const previousSlide = ()=>{
     if(recorrido===0) setRecorrido(slides.length - 1);

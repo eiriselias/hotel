@@ -1,8 +1,9 @@
-import React from 'react'
+
+import Calendario from '../calendario/calendario'
 
 const Huespedes = () => {
   return (
-    <div>Huespedes</div>
+    <Calendario/>
   )
 }
 

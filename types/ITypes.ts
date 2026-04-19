@@ -35,13 +35,13 @@ export interface IHabitacion{
 }
 
 export interface IHuesped{
-    id: string
+    id?: string
     nombres: string
     apellidos: string
     numeroDocumento: number
-    fechaNacimiento: Date
-    ingreso: Date
-    salida: Date
-    habitacionId: string
-    responsableId: string
+    fechaNacimiento: string
+    ingreso?: Date
+    salida?: Date
+    habitacionId?: string
+    responsableId?: string
 }

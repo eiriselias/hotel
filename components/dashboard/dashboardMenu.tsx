@@ -1,8 +1,14 @@
 'use client'
 import { useAuth } from '@/context/AuthContext'
+import { useState } from 'react'
+import Modal from '../modal/modal'
+import Habitacion from '../habitacion/habitacion'
+import HuespedNew from '../huespedNew'
 
 const DashboardMenu = () => {
     const { user } = useAuth()
+    const [openHabitacion, setOpenHabitacion] = useState(false)
+    const [openHuespedNew, setOpenHuespedNew] = useState(false)
     const listStile = "hover:bg-blue-500 hover:text-white hover:w-full pl-4 hover:rounded-r-2xl cursor-pointer transition-colors"
   return (
     <div>
@@ -19,7 +25,7 @@ const DashboardMenu = () => {
                 <hr className="w-[80%] border-t border-gray-300 my-2" />
                 
                 <ul className="flex flex-col gap-y-1 w-full text-sm text-gray-600">
-                    <div className={`${listStile} flex gap-4 p-2 items-center`}>
+                    <div onClick={()=>setOpenHuespedNew(true)} className={`${listStile} flex gap-4 p-2 items-center`}>
                         <i className="fa-solid fa-user-plus"></i>
                         <li>Nuevo huésped</li>
                     </div>
@@ -40,7 +46,7 @@ const DashboardMenu = () => {
                 <hr className="w-[80%] border-t border-gray-300 my-2" />
                 
                 <ul className="flex flex-col  gap-y-1 w-full text-sm text-gray-600">
-                    <div className={`${listStile} flex gap-4 p-2 items-center`}>
+                    <div onClick={()=>setOpenHabitacion(true)} className={`${listStile} flex gap-4 p-2 items-center`}>
                         <i className="fa-solid fa-house-circle-check"></i>
                         <li>Nueva habitación</li>
                     </div>
@@ -84,7 +90,12 @@ const DashboardMenu = () => {
                 </ul>
             </li>
         </ul>
-
+        <Modal open={openHabitacion} onClose={()=>setOpenHabitacion(false)}>
+            <Habitacion/>
+        </Modal>
+        <Modal open={openHuespedNew} onClose={()=>setOpenHuespedNew(false)}>
+            <HuespedNew/>
+        </Modal>
     </div>
   )
 }

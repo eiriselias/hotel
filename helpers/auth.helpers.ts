@@ -1,6 +1,6 @@
 import { IAuthRepose, ILoginProps } from "@/types/ITypes";
 
-const dataBaseUrl = "http://localhost:3000"
+const dataBaseUrl = process.env.NEXT_PUBLIC_DATA_BASE_URL
 
 export async function Login(dataUser:ILoginProps) {
 
